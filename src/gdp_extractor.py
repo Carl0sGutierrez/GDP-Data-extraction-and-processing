@@ -56,6 +56,9 @@ def process_data(data):
     # Rename the column header from 'GDP (Million USD) to 'GDP (Billion USD)'
     top_10 = top_10.rename(columns = {'GDP (Million USD)' : 'GDP (Billion USD)'})
 
+    #Load the dataframe top_10 to csv file called Largest_economies.csv
+    top_10.to_csv('./Largest_economies.csv')
+    
     return top_10
 def main():
     data = fetch_data(URL)
