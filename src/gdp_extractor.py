@@ -43,6 +43,19 @@ def process_data(data):
         "Country": countries,
         "GDP (Million USD)": gdp_values
     })
+
+    # Change the data type of the 'GDP (Million USD)' column to integer.
+    top_10['GDP (Million USD)'] = top_10['GDP (Million USD)'].astype(int)
+
+    #Convert the GDP value in Million USD to Billion USD
+    top_10[['GDP (Million USD)']] = top_10[['GDP (Million USD)']]/1000
+
+    #Round the value to 2 decimal places.
+    top_10[['GDP (Million USD)']] = np.round(top_10[['GDP (Million USD)']], 2)
+
+    # Rename the column header from 'GDP (Million USD) to 'GDP (Billion USD)'
+    top_10 = top_10.rename(columns = {'GDP (Million USD)' : 'GDP (Billion USD)'})
+
     return top_10
 def main():
     data = fetch_data(URL)
